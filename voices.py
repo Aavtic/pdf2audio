@@ -129,7 +129,6 @@ class GenerateVoices:
         burp0_json={"rate": 1, "recording": False, "text": text, "voice": "en-US-AvaMultilingualNeural", "volume": 1, "with_speechmarks": True}
         s = session.post(burp0_url, headers=burp0_headers, json=burp0_json)
 
-        print(s.text)
         data = s.content
         json_data = json.loads(data)
 
@@ -137,4 +136,4 @@ class GenerateVoices:
         decoded = base64.b64decode(audio_data)
         with open(filename, "wb") as f:
             f.write(decoded)
-            print("Contents written")
+            print("Contents written to ", filename)
